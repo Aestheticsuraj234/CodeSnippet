@@ -10,7 +10,7 @@ import rust from "highlight.js/lib/languages/rust";
 import c from "highlight.js/lib/languages/c";
 import cpp from "highlight.js/lib/languages/cpp";
 import * as htmlToImage from "html-to-image";
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+
 
 import "highlight.js/styles/atom-one-dark.css";
 
@@ -82,7 +82,7 @@ export default function Component() {
     hljs.highlightAll();
   };
 
-  const onThemeChange = (value) => {
+  const onThemeChange = (value:string) => {
     setTheme(value);
   };
 
@@ -90,6 +90,7 @@ export default function Component() {
     const pre = document.querySelector("pre");
 
     htmlToImage
+    // @ts-ignore
       .toPng(pre)
       .then((dataUrl) => {
         const a = document.createElement("a");
